@@ -160,5 +160,3 @@ const StyleableElement: React.FC<StyleableElementProps> = ({
 };
 
 export default StyleableElement;
-
-export default StyleableElement;
