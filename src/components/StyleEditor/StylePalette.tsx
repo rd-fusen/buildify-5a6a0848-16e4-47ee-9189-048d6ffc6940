@@ -291,7 +291,7 @@ const StylePalette: React.FC<StylePaletteProps> = ({ onStyleSelect }) => {
           <TabsContent value="colors" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-sm font-medium mb-3">Background Colors</h3>
+                <h3 className="text-sm font-medium mb-3">Background Colors <span className="text-xs text-gray-500">(applies to container)</span></h3>
                 <div className="grid grid-cols-7 gap-2 overflow-x-auto pb-2">
                   {colorPalette.map((colorGroup) => (
                     <div key={colorGroup.name} className="space-y-1">
@@ -314,7 +314,7 @@ const StylePalette: React.FC<StylePaletteProps> = ({ onStyleSelect }) => {
                 </div>
               </div>
               <div>
-                <h3 className="text-sm font-medium mb-3">Text Colors</h3>
+                <h3 className="text-sm font-medium mb-3">Text Colors <span className="text-xs text-gray-500">(applies to text)</span></h3>
                 <div className="grid grid-cols-7 gap-2 overflow-x-auto pb-2">
                   {colorPalette.map((colorGroup) => (
                     <div key={`${colorGroup.name}-text`} className="space-y-1">
@@ -326,10 +326,10 @@ const StylePalette: React.FC<StylePaletteProps> = ({ onStyleSelect }) => {
                           className="h-6 w-6 rounded cursor-grab border border-gray-200 mx-auto"
                           draggable
                           onDragStart={(e) => 
-                            handleDragStart(e, 'textColor', color.text)
+                            handleDragStart(e, 'textColor', `text-${colorGroup.name}-${color.shade}`)
                           }
-                          onClick={() => onStyleSelect('textColor', color.text)}
-                          title={color.text}
+                          onClick={() => onStyleSelect('textColor', `text-${colorGroup.name}-${color.shade}`)}
+                          title={`text-${colorGroup.name}-${color.shade}`}
                         />
                       ))}
                     </div>

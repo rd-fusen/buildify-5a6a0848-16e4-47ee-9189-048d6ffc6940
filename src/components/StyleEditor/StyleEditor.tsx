@@ -45,13 +45,13 @@ const StyleEditor: React.FC<StyleEditorProps> = ({ onSave }) => {
     // Remove any existing classes of the same type
     const filteredClasses = classes.filter(cls => {
       if (styleType === 'backgroundColor' && cls.startsWith('bg-')) return false;
-      if (styleType === 'textColor' && cls.startsWith('text-') && !cls.startsWith('text-')) return false;
-      if (styleType === 'fontSize' && cls.startsWith('text-') && !cls.includes('-')) return false;
+      if (styleType === 'textColor' && cls.startsWith('text-') && cls !== 'text-center' && cls !== 'text-base' && cls !== 'text-sm' && cls !== 'text-lg' && cls !== 'text-xl') return false;
+      if (styleType === 'fontSize' && (cls === 'text-xs' || cls === 'text-sm' || cls === 'text-base' || cls === 'text-lg' || cls === 'text-xl' || cls === 'text-2xl' || cls === 'text-3xl' || cls === 'text-4xl' || cls === 'text-5xl' || cls === 'text-6xl' || cls === 'text-7xl' || cls === 'text-8xl')) return false;
       if (styleType === 'fontWeight' && cls.startsWith('font-')) return false;
       if (styleType === 'padding' && cls.startsWith('p-')) return false;
       if (styleType === 'borderRadius' && cls.startsWith('rounded')) return false;
       if (styleType === 'shadow' && cls.startsWith('shadow')) return false;
-      if (styleType === 'gradient' && cls.startsWith('bg-gradient')) return false;
+      if (styleType === 'gradient' && (cls.startsWith('bg-gradient') || cls.startsWith('from-') || cls.startsWith('to-') || cls.startsWith('via-'))) return false;
       return true;
     });
     
@@ -313,11 +313,27 @@ const StyleEditor: React.FC<StyleEditorProps> = ({ onSave }) => {
                       
                       <div>
                         <Label htmlFor="element-class">Tailwind Classes</Label>
+                        <div className="mt-2 flex flex-wrap gap-1 mb-2 border p-2 rounded min-h-[100px]">
+                          {selectedElementData.className.split(' ').filter(cls => cls.trim()).map((cls, index) => (
+                            <span 
+                              key={index} 
+                              className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-gray-100 hover:bg-gray-200 cursor-pointer"
+                              onClick={() => {
+                                const classes = selectedElementData.className.split(' ');
+                                const filteredClasses = classes.filter(c => c !== cls);
+                                handleStyleChange(selectedElementData.id, filteredClasses.join(' '));
+                              }}
+                            >
+                              {cls} ✕
+                            </span>
+                          ))}
+                        </div>
                         <Input
                           id="element-class"
                           value={selectedElementData.className}
                           onChange={(e) => handleStyleChange(selectedElementData.id, e.target.value)}
                           className="mt-1"
+                          placeholder="Edit classes directly or click on tags to remove"
                         />
                       </div>
                     </div>
