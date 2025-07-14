@@ -8,6 +8,14 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { 
+  Palette, 
+  Paintbrush, 
+  Type, 
+  Maximize, 
+  Square, 
+  Sparkles 
+} from 'lucide-react';
 
 // Color options
 const colorOptions = [
@@ -123,15 +131,33 @@ const StylePalette: React.FC<StylePaletteProps> = ({ onStyleSelect }) => {
       <CardHeader className="pb-2">
         <CardTitle>Style Palette</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4">
         <Tabs defaultValue="colors" className="w-full style-editor-tabs">
-          <TabsList className="w-full grid grid-cols-6 gap-2 mb-6">
-            <TabsTrigger value="colors" className="px-3 py-2 text-sm">Colors</TabsTrigger>
-            <TabsTrigger value="gradients" className="px-3 py-2 text-sm">Gradients</TabsTrigger>
-            <TabsTrigger value="typography" className="px-3 py-2 text-sm">Typography</TabsTrigger>
-            <TabsTrigger value="spacing" className="px-3 py-2 text-sm">Spacing</TabsTrigger>
-            <TabsTrigger value="borders" className="px-3 py-2 text-sm">Borders</TabsTrigger>
-            <TabsTrigger value="effects" className="px-3 py-2 text-sm">Effects</TabsTrigger>
+          <TabsList className="w-full grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+            <TabsTrigger value="colors" className="px-3 py-3 text-sm flex items-center gap-2 justify-center">
+              <Palette className="h-4 w-4" />
+              <span>Colors</span>
+            </TabsTrigger>
+            <TabsTrigger value="gradients" className="px-3 py-3 text-sm flex items-center gap-2 justify-center">
+              <Paintbrush className="h-4 w-4" />
+              <span>Gradients</span>
+            </TabsTrigger>
+            <TabsTrigger value="typography" className="px-3 py-3 text-sm flex items-center gap-2 justify-center">
+              <Type className="h-4 w-4" />
+              <span>Typography</span>
+            </TabsTrigger>
+            <TabsTrigger value="spacing" className="px-3 py-3 text-sm flex items-center gap-2 justify-center">
+              <Maximize className="h-4 w-4" />
+              <span>Spacing</span>
+            </TabsTrigger>
+            <TabsTrigger value="borders" className="px-3 py-3 text-sm flex items-center gap-2 justify-center">
+              <Square className="h-4 w-4" />
+              <span>Borders</span>
+            </TabsTrigger>
+            <TabsTrigger value="effects" className="px-3 py-3 text-sm flex items-center gap-2 justify-center">
+              <Sparkles className="h-4 w-4" />
+              <span>Effects</span>
+            </TabsTrigger>
           </TabsList>
 
           {/* Colors Tab */}

@@ -82,6 +82,14 @@
   }
   
   .style-editor-tabs [data-state="inactive"] {
-    @apply hover:bg-gray-100 transition-colors;
+    @apply hover:bg-gray-100/80 transition-colors bg-white/50;
+  }
+  
+  .style-editor-tabs [role="tablist"] {
+    @apply p-2;
+  }
+  
+  .style-editor-tabs [role="tab"] {
+    @apply flex-grow text-center h-full;
   }
 }
