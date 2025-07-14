@@ -75,3 +75,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .style-editor-tabs [data-state="active"] {
+    @apply bg-white shadow-sm border-gray-200 font-medium;
+  }
+  
+  .style-editor-tabs [data-state="inactive"] {
+    @apply hover:bg-gray-100 transition-colors;
+  }
+}

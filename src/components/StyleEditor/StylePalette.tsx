@@ -120,18 +120,18 @@ const StylePalette: React.FC<StylePaletteProps> = ({ onStyleSelect }) => {
 
   return (
     <Card className="w-full">
-      <CardHeader>
+      <CardHeader className="pb-2">
         <CardTitle>Style Palette</CardTitle>
       </CardHeader>
       <CardContent>
-        <Tabs defaultValue="colors">
-          <TabsList className="grid grid-cols-6 mb-4">
-            <TabsTrigger value="colors">Colors</TabsTrigger>
-            <TabsTrigger value="gradients">Gradients</TabsTrigger>
-            <TabsTrigger value="typography">Typography</TabsTrigger>
-            <TabsTrigger value="spacing">Spacing</TabsTrigger>
-            <TabsTrigger value="borders">Borders</TabsTrigger>
-            <TabsTrigger value="effects">Effects</TabsTrigger>
+        <Tabs defaultValue="colors" className="w-full style-editor-tabs">
+          <TabsList className="w-full grid grid-cols-6 gap-2 mb-6">
+            <TabsTrigger value="colors" className="px-3 py-2 text-sm">Colors</TabsTrigger>
+            <TabsTrigger value="gradients" className="px-3 py-2 text-sm">Gradients</TabsTrigger>
+            <TabsTrigger value="typography" className="px-3 py-2 text-sm">Typography</TabsTrigger>
+            <TabsTrigger value="spacing" className="px-3 py-2 text-sm">Spacing</TabsTrigger>
+            <TabsTrigger value="borders" className="px-3 py-2 text-sm">Borders</TabsTrigger>
+            <TabsTrigger value="effects" className="px-3 py-2 text-sm">Effects</TabsTrigger>
           </TabsList>
 
           {/* Colors Tab */}
